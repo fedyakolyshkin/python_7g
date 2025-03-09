@@ -8,6 +8,14 @@ global_coins = {
 
 global_endings = []
 
+def is_int(s):
+    try: 
+        int(s)
+    except ValueError:
+        return False
+    else:
+        return True
+
 def input_choice(title, variants, prompt):
     if title:
         print(title)
@@ -15,7 +23,7 @@ def input_choice(title, variants, prompt):
         print(f"{i+1}: {variants[i]}")
     while True:
         choise = input(prompt)
-        if choise.isdigit():
+        if is_int(choise):
             choise_int = int(choise)
             if choise_int > 0 and choise_int <= len(variants):
                 return str(choise_int)
